@@ -1,0 +1,12 @@
+body{
+  background-image: url('fond18.jpg');
+  background-repeat: round;
+}
+.square{
+  height: 40px;
+  width: 40px;
+  position: absolute;
+}
+.move{
+  text-align: right;
+}

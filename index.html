@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="style.css">
+  <script src="jquery-3.2.1.js"></script>
+  <title>exercice4 JQ</title>
+</head>
+<body>
+  <div class="">
+    <form class="move" action="index.html" method="post">
+      <input id="direction" type="text" name="test" value="">
+    </form>
+  </div>
+  <div id="square" class="square">
+<img src="2046-73177.png" alt="mazoduck">
+  </div>
+  <script>
+  $(function(){
+    $('#direction').keypress(function(event){
+      //declaration des variables
+      var windowsizewidth= $(window).width();//permet d etablir la largeur de l ecran
+      var windowsizeheight= $(window).height();//permet d etablir la hauteur de l ecran
+      var x= $('#square').offset().left;//declare le coin gauche haut du carré(div)
+      var y= $('#square').offset().top;//déclare le coin haut gauche du carré
+      //déclaration des conditions
+      if(event.keyCode == 38){//touche haut
+        if(y <= 0) {
+          // si le coin haut du carré est plus petit ou égale au point 0
+          $('#square').css('top', windowsizeheight -50);//alors le carré se rend au point haut de la fenetre -50 correspondant au 40px du carré + les 10 ajoutés lors du mouvement.
+        }else {//sinon on bouge(anime) de 10 px vers le haut(top -=10),1=vitesse d execution
+          $('#square').animate({top:'-=10'},1);
+          //lorsque l on utilise la fonction animate,bien penser a déclarer la position absolute dans le css sinon cela ne fonctionne pas.
+        };
+      }else if(event.keyCode == 40){//touche bas
+        if(y >= (windowsizeheight -45)) {
+          $('#square').css('top', '0');
+        } else {
+          $('#square').animate({top:'+=10'},1);
+        };
+      }else if(event.keyCode == 39){//touche droite
+        if (x >= (windowsizewidth -50)) {
+          $('#square').css('left','0');
+        }else{
+          $('#square').animate({left:'+=10'},1);
+        };
+      }else if(event.keyCode == 37){//touche gauche
+        if (x <= 0){
+          $('#square').css('left',windowsizewidth -50 )
+        }else{
+          $('#square').animate({left:'-=10'},1);
+        };
+      };
+    });
+  })
+  </script>
+</body>
+</html>
